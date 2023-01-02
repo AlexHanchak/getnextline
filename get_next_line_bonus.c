@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lex <lex@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ohanchak <ohanchak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/22 16:24:46 by lex               #+#    #+#             */
-/*   Updated: 2022/12/22 16:37:11 by lex              ###   ########.fr       */
+/*   Created: 2022/12/22 16:24:46 by ohanchak          #+#    #+#             */
+/*   Updated: 2022/12/28 19:09:08 by ohanchak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,17 @@ char	*ft_output(char **next_line, int position, int bytes)
 	return (line);
 }
 
+char	free_buff(char *buff, char **next_line, int bytes)
+{
+	if (bytes == -1)
+	{
+		ft_free(&buff);
+		ft_free(next_line);
+		return (1);
+	}
+	return (0);
+}
+
 char	*get_next_line(int fd)
 
 {
@@ -84,8 +95,10 @@ char	*get_next_line(int fd)
 		if (buff == NULL)
 			return (NULL);
 		bytes = read(fd, buff, BUFFER_SIZE);
-		if (bytes == 0 || bytes == -1)
+		if (bytes == 0)
 			break ;
+		if (free_buff(buff, &next_line[fd], bytes))
+			return (NULL);
 		next_line[fd] = ft_strnjoin(next_line[fd], buff, bytes);
 		position = ft_strchr(next_line[fd], '\n', 1);
 		ft_free(&buff);

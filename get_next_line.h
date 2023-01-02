@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_getnextline.h                                   :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lex <lex@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ohanchak <ohanchak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 09:51:37 by lex               #+#    #+#             */
-/*   Updated: 2022/12/08 17:04:49 by lex              ###   ########.fr       */
+/*   Created: 2022/12/08 09:51:37 by ohanchak          #+#    #+#             */
+/*   Updated: 2022/12/27 15:45:07 by ohanchak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ void	*ft_calloc(size_t nelem, size_t elsize);
 char	*ft_update_nl(char **next_line, int position);
 char	*ft_output(char **next_line, int position, int bytes);
 char	*get_next_line(int fd);
-
 
 #endif
